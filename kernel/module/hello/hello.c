@@ -1,11 +1,21 @@
+#include <hook.h>
+#include <log.h>
 
-
-int kpm_init()
+int add(int a, int b)
 {
-    return 0;
+    return a + b;
 }
 
-int kpm_uninit()
+int (*backup_add)(int, int) = 0;
+
+int replace_add(int a, int b)
 {
-    return 0;
+    return a - b;
+}
+
+int init()
+{
+    int a = 20;
+    int b = 10;
+    logkd("a") hook() return 0;
 }

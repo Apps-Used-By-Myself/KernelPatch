@@ -22,6 +22,11 @@ typedef int8_t s8;
 typedef uint64_t __u64;
 typedef uint32_t __u32;
 typedef uint16_t __u16;
+typedef uint8_t __u8;
+typedef int8_t __s8;
+typedef int16_t __s16;
+typedef int32_t __s32;
+typedef int64_t __s64;
 
 typedef __u16 __bitwise __le16;
 typedef __u16 __bitwise __be16;
@@ -209,8 +214,6 @@ typedef void (*swap_func_t)(void *a, void *b, int size);
 
 typedef int (*cmp_r_func_t)(const void *a, const void *b, const void *priv);
 typedef int (*cmp_func_t)(const void *a, const void *b);
-
-
 
 #define offsetof(TYPE, MEMBER) ((size_t) & ((TYPE *)0)->MEMBER)
 

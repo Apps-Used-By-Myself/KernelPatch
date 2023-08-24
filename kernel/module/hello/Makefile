@@ -5,19 +5,23 @@ endif
 CC = $(TARGET_COMPILE)gcc
 LD = $(TARGET_COMPILE)ld
 
-CFLAGS = -std=c11 -Wall
+KP_DIR := ../..
 
-objs := hello.O
+INCLUDE_DIRS := include libc init/include linux linux/include linux/arch/arm64/include linux/tools/arch/arm64/include
 
-all: kpm_hello
+INCLUDE_FLAGS := $(foreach dir,$(INCLUDE_DIRS),-I$(KP_DIR)/$(dir))
 
-kpm_hello: hello.o ${objs}
-	${CC} -fpic -shared -o $@ $^
+objs := hello.o
 
-%.o : %.c
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+all: hello.kpm
+
+hello.kpm: ${objs}
+	${CC} -r -o $@ $^
+
+%.o: %.c
+	${CC} $(CFLAGS) $(INCLUDE_FLAGS) -c -O2 -o $@ $<
 
 .PHONY: clean
 clean:
-	rm -rf kpm_hello
+	rm -rf hello.kpm
 	find . -name "*.o" | xargs rm -f

@@ -16,4 +16,7 @@
 *.bin
 *.elf
 
+# kernel patch module
+*.kpm
+
 kpimg
