@@ -30,7 +30,7 @@ BASE_SRCS += base/predata.c
 
 BASE_SRCS += $(wildcard minc/*.c)
 
-BASE_SRCS += $(wildcard module/*.c)
+# BASE_SRCS += $(wildcard module/*.c)
 
 BASE_SRCS += $(wildcard init/*.c)
 BASE_SRCS += $(wildcard init/accctl/*.c)
