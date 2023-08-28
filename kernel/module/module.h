@@ -4,6 +4,10 @@
 #include "elf.h"
 #include <asm-generic/module.h>
 
+#define MODULE_INFO(name, info)                                                                                      \
+    static const char __attribute__((__unused__)) __attribute__((section(".kpm.info"))) __aligned(1) name[] = ##name \
+        "="##info
+
 struct load_info
 {
     const char *name;
@@ -21,7 +25,7 @@ struct load_info
 
     struct
     {
-        unsigned int sym, str, mod, vers, info, pcpu;
+        unsigned int sym, str, mod, vers, info;
     } index;
 };
 
